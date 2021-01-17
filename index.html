@@ -1,0 +1,60 @@
+<style>
+        table {
+            width: 100%;
+            font: 17px Calibri;
+        }
+        
+        table,
+        th,
+        td {
+            border: solid 1px #DDD;
+            border-collapse: collapse;
+            padding: 2px 3px;
+            text-align: center;
+        }
+        
+        table img {
+            border: none;
+            width: 51px;
+            height: 51px;
+        }
+    </style>
+    <table id='table'>
+        <tr>
+            <th>Check box</th>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Image</th>
+        </tr>
+    </table>
+    <script>
+        $(document).ready(function() {
+
+            $.getJSON(" //Enter your json url",
+                function(data) {
+                    var bets = '';
+                    $.each(data, function(key, value) {
+
+                        bets += '<tr>';
+
+                        bets += '<td><input type="checkbox">';
+
+                        bets += '<td>' +
+                            value.Name + '</td>';
+
+                        bets += '<td>' +
+                            value.Price + '</td>';
+
+                        bets += '<td><img src=' +
+                            value.ProfileImage + '>';
+                        bets += '</td>';
+                        bets += '</td>';
+                       
+                        bets += '</tr>';
+                    });
+
+                    $('#table').append(bets);
+                });
+        });
+    </script>
+ 
